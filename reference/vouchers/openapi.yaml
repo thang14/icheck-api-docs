@@ -1,9 +1,220 @@
-openapi: '3.0.0'
+openapi: 3.0.0
 info:
   title: Vouchers
   version: '1.0'
 servers:
-- url: http://localhost:3000
-paths: {}
+  - url: 'http://localhost:3000/api/v1'
+paths:
+  /vouchers:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      requestBody: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: ./models/voucheresponse.v1.yaml
+                  count:
+                    type: integer
+              examples: {}
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: ''
+          required: true
+        - schema:
+            type: integer
+          in: query
+          name: offset
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: order
+          description: 'Sắp xếp (VD: id hoặc -id)'
+        - schema:
+            type: string
+          in: query
+          name: search
+          description: Tìm kiếm theo tên hoặc mã
+        - schema:
+            type: string
+            enum:
+              - discount
+              - refund
+          in: query
+          name: type
+          description: Loại voucher
+        - schema:
+            type: string
+            enum:
+              - public
+              - private
+              - individual
+          in: query
+          name: display
+          description: Kiểu hiển thị
+        - schema:
+            type: string
+            enum:
+              - waiting
+              - verifyed
+              - cancel
+          in: query
+          name: verifyed
+          description: Trạng thái voucher
+        - schema:
+            type: string
+            enum:
+              - notyet
+              - stoped
+              - running
+              - finished
+          in: query
+          name: status
+          description: Tình trạng voucher
+        - schema:
+            type: number
+          in: query
+          name: shop_id
+          description: ID của shop
+        - schema:
+            type: string
+          in: query
+          name: from_at
+          description: 'Khoảng thời gian bắt đầu (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
+        - schema:
+            type: string
+          in: query
+          name: to_at
+          description: 'Khoảng thời gian kết thúc (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/voucheresponse.v1.yaml
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/vouchercreate.v1.yaml
+  '/vouchers/{id}':
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/voucheresponse.v1.yaml
+      description: ''
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        required: true
+    put:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/voucheresponse.v1.yaml
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/voucherupdate.v1.yaml
+    delete:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/voucheresponse.v1.yaml
+      description: ''
+  '/vouchers/{id}/stop':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/voucheresponse.v1.yaml
+  '/vouchers/{id}/running':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/voucheresponse.v1.yaml
+  '/vouchers/{id}/verify':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/voucheresponse.v1.yaml
+  '/vouchers/{id}/cancel-verify':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/voucheresponse.v1.yaml
 components:
   schemas: {}

@@ -1,0 +1,102 @@
+title: VoucherCreate
+type: object
+properties:
+  name:
+    type: string
+    description: |
+      Tên của voucher
+  code:
+    type: string
+    description: |
+      mã voucher
+  type:
+    type: string
+    enum:
+      - discount
+      - refund
+    description: loại voucher
+  source:
+    type: string
+    description: Nguồn gốc của voucher
+  display:
+    type: string
+    description: Kiểu hiển thị
+    enum:
+      - public
+      - private
+      - individual
+  discount_type:
+    type: string
+    description: loại giảm giá
+    enum:
+      - subtraction
+      - percent
+  discount_amount:
+    type: number
+    description: mức giảm giá
+  max_amount:
+    type: number
+    description: mức giảm giá tối đa ( required khi loại giảm là percent )
+  min_order_value:
+    type: number
+    description: giá trị đơn hàng tối thiểu
+  limit_use:
+    type: integer
+    description: giới hạn số lần sử dụng
+  limit_per_user:
+    type: integer
+    description: số lượt sử dụng tối đa của mỗi user
+  user_level:
+    type: array
+    description: danh sách hạng người dùng áp dụng
+    items:
+      type: number
+  shops:
+    type:
+      - array
+      - number
+    description: danh sách shops được áp dụng
+    items: {}
+  categories:
+    type: array
+    description: danh sách danh mục được áp dụng
+    items:
+      type: number
+  products:
+    type: array
+    description: danh sách sản phẩm được áp dụng
+    items:
+      type: number
+  owner_id:
+    type: integer
+    description: chủ sở hữu voucher
+  created_by:
+    type: integer
+    description: đối tượng tạo voucher
+  image:
+    type: string
+    description: hình ảnh voucher
+  description:
+    type: string
+    description: mô tả voucher
+  from_at:
+    type: string
+    description: ngày bắt đầu hoạt động
+    format: date-time
+  to_at:
+    type: string
+    description: ngày kết thúc hoạt động
+    format: date-time
+required:
+  - name
+  - code
+  - type
+  - display
+  - discount_type
+  - discount_amount
+  - min_order_value
+  - limit_use
+  - limit_per_user
+  - owner_id
+  - created_by
+  - from_at
