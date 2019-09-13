@@ -19,7 +19,7 @@ paths:
       parameters: []
   /users:
     get:
-      summary: Your GET endpoint
+      summary: Your GET endpoint6
       tags: []
       responses: {}
       description: ''
