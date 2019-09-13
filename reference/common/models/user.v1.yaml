@@ -1,7 +1,11 @@
 title: User
 type: object
+x-examples:
+  example-1: {}
 properties:
   id:
     type: string
   name:
+    type: string
+  avatar:
     type: string
