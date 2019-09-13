@@ -1,0 +1,123 @@
+title: VoucheResponse
+type: object
+properties:
+  id:
+    type: integer
+    description: ID của voucher
+  name:
+    type: string
+    description: Tên của voucher
+  code:
+    type: string
+    description: mã voucher
+  type:
+    type: string
+    enum:
+      - discount
+      - refund
+    description: loại voucher
+  source:
+    type: string
+    description: Nguồn gốc của voucher
+  display:
+    type: string
+    description: Kiểu hiển thị
+    enum:
+      - public
+      - private
+      - individual
+  state:
+    type: string
+    description: trạng thái của voucher
+    enum:
+      - stoped
+      - running
+  status:
+    type: string
+    description: tình trạng của voucher
+    enum:
+      - notyet
+      - stoped
+      - running
+      - finished
+  discount_type:
+    type: string
+    description: loại giảm giá
+    enum:
+      - subtraction
+      - percent
+  discount_amount:
+    type: number
+    description: mức giảm giá
+  max_amount:
+    type: number
+    description: mức giảm giá tối đa ( required khi loại giảm là percent )
+  min_order_value:
+    type: number
+    description: giá trị đơn hàng tối thiểu
+  retries:
+    type: integer
+    description: số lần đã sử dụng
+  unused_count:
+    type: integer
+    description: số lần sử dụng còn lại
+  limit_use:
+    type: integer
+    description: giới hạn số lần sử dụng
+  limit_per_user:
+    type: integer
+    description: số lượt sử dụng tối đa của mỗi user
+  product_total:
+    type: integer
+    description: số lượng sản phẩm áp dụng
+  user_level:
+    type: array
+    description: danh sách hạng người dùng áp dụng
+    items:
+      type: number
+  shops:
+    type:
+      - array
+      - number
+    description: danh sách shops được áp dụng
+    items:
+      type: number
+  categories:
+    type: array
+    description: danh sách danh mục được áp dụng
+    items:
+      type: number
+  products:
+    type: array
+    description: danh sách sản phẩm được áp dụng
+    items:
+      type: number
+  owner_id:
+    type: integer
+    description: chủ sở hữu voucher
+  created_by:
+    type: integer
+    description: đối tượng tạo voucher
+  image:
+    type: string
+    description: hình ảnh voucher
+  description:
+    type: string
+    description: mô tả voucher
+  from_at:
+    type: string
+    description: ngày bắt đầu hoạt động
+    format: date-time
+  to_at:
+    type: string
+    description: ngày kết thúc hoạt động
+    format: date-time
+  created_at:
+    type: string
+    description: thời gian tạo tạo
+    format: date-time
+  updated_at:
+    type: string
+    description: thời gian cập nhật
+    format: date-time
+
