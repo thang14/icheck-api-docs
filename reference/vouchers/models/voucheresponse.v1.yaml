@@ -30,15 +30,8 @@ properties:
     type: string
     description: trạng thái của voucher
     enum:
-      - stoped
-      - running
-  status:
-    type: string
-    description: tình trạng của voucher
-    enum:
-      - notyet
-      - stoped
-      - running
+      - scheduled
+      - ongoing
       - finished
   discount_type:
     type: string
