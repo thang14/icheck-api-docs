@@ -150,6 +150,8 @@ paths:
           application/json:
             schema:
               $ref: ./models/voucherupdate.v1.yaml
+      tags:
+        - Vouchers
     delete:
       summary: ''
       responses:
@@ -160,6 +162,8 @@ paths:
               schema:
                 $ref: ./models/voucheresponse.v1.yaml
       description: ''
+      tags:
+        - Vouchers
   '/vouchers/{id}/verify':
     parameters:
       - type: string
