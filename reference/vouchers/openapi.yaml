@@ -7,7 +7,7 @@ servers:
 paths:
   /vouchers:
     get:
-      summary: Your GET endpoint
+      summary: Get list Vouchers
       tags:
         - Vouchers
       requestBody: {}
@@ -99,7 +99,7 @@ paths:
           name: to_at
           description: 'Khoảng thời gian kết thúc (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
     post:
-      summary: ''
+      summary: Create Voucher
       responses:
         '200':
           description: OK
@@ -117,7 +117,7 @@ paths:
         - Vouchers
   '/vouchers/{id}':
     get:
-      summary: Your GET endpoint
+      summary: 'Get voucher by id'
       tags:
         - Vouchers
       responses:
@@ -135,7 +135,7 @@ paths:
         in: path
         required: true
     put:
-      summary: ''
+      summary: Update voucher
       responses:
         '200':
           description: OK
@@ -152,7 +152,7 @@ paths:
       tags:
         - Vouchers
     delete:
-      summary: ''
+      summary: Delete voucher
       responses:
         '200':
           description: OK
@@ -234,3 +234,4 @@ paths:
                 - ids
 components:
   schemas: {}
+as: {}
