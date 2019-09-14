@@ -117,7 +117,7 @@ paths:
         - Vouchers
   '/vouchers/{id}':
     get:
-      summary: Get voucher by id
+      summary: 'Get voucher by id'
       tags:
         - Vouchers
       responses:
@@ -234,3 +234,4 @@ paths:
                 - ids
 components:
   schemas: {}
+as: {}
