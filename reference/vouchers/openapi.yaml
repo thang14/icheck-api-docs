@@ -77,12 +77,11 @@ paths:
         - schema:
             type: string
             enum:
-              - notyet
-              - stoped
-              - running
+              - scheduled
+              - ongoing
               - finished
           in: query
-          name: status
+          name: state
           description: Tình trạng voucher
         - schema:
             type: number
@@ -164,39 +163,74 @@ paths:
       description: ''
       tags:
         - Vouchers
-  '/vouchers/{id}/verify':
-    parameters:
-      - type: string
-        name: id
-        in: path
-        required: true
+  /vouchers/cancel-verify:
+    parameters: []
     post:
-      summary: ''
+      summary: Cancel verify Vouchers
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: ./models/voucheresponse.v1.yaml
+                type: array
+                items:
+                  type: number
       tags:
         - Vouchers
-  '/vouchers/{id}/cancel-verify':
-    parameters:
-      - type: string
-        name: id
-        in: path
-        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                verify_reject_reason:
+                  type: string
+                  description: lý do hủy duyệt
+                ids:
+                  type: array
+                  description: danh sách id voucher
+                  items:
+                    type: number
+              required:
+                - verify_reject_reason
+                - ids
+          application/xml:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: number
+        description: ''
+  /vouchers/verify:
+    parameters: []
     post:
-      summary: ''
+      summary: Verify Vouchers
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                $ref: ./models/voucheresponse.v1.yaml
+                type: array
+                items:
+                  type: number
       tags:
         - Vouchers
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: number
+              required:
+                - ids
 components:
   schemas: {}
