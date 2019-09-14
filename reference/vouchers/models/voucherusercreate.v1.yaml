@@ -1,0 +1,10 @@
+title: VoucherUserCreate
+type: object
+properties:
+  voucher_ids:
+    type: array
+    description: Danh sách voucher id
+    items:
+      type: number
+required:
+  - voucher_ids
