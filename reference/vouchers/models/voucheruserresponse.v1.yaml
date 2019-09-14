@@ -1,0 +1,30 @@
+title: VoucherUserResponse
+type: object
+properties:
+  id:
+    type: number
+    description: id của
+  voucher_id:
+    type: number
+    description: id của voucher
+  voucher_code:
+    type: string
+    description: mã voucher
+  user_id:
+    type: number
+    description: id của user sưu tầm mã voucher
+  retries:
+    type: integer
+    description: số lượt mà user đã sử dụng mã
+  user_unused_count:
+    type: integer
+    description: số lượt sử dụng còn lại
+  total_use:
+    type: integer
+    description: tổng số lượt sử dụng mà user có
+  created_at:
+    type: string
+    format: date-time
+  updated_at:
+    type: string
+    format: date-time
