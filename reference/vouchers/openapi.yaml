@@ -160,40 +160,6 @@ paths:
               schema:
                 $ref: ./models/voucheresponse.v1.yaml
       description: ''
-  '/vouchers/{id}/stop':
-    parameters:
-      - type: string
-        name: id
-        in: path
-        required: true
-    post:
-      summary: ''
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ./models/voucheresponse.v1.yaml
-      tags:
-        - Vouchers
-  '/vouchers/{id}/running':
-    parameters:
-      - type: string
-        name: id
-        in: path
-        required: true
-    post:
-      summary: ''
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ./models/voucheresponse.v1.yaml
-      tags:
-        - Vouchers
   '/vouchers/{id}/verify':
     parameters:
       - type: string
