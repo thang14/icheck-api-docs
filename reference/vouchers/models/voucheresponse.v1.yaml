@@ -4,21 +4,27 @@ properties:
   id:
     type: integer
     description: ID của voucher
+  type:
+    type: string
+    description: loại voucher
+    enum:
+      - discount
+      - refund
   name:
     type: string
     description: Tên của voucher
   code:
     type: string
     description: mã voucher
-  type:
+  image:
     type: string
-    enum:
-      - discount
-      - refund
-    description: loại voucher
+    description: hình ảnh voucher
   source:
     type: string
     description: Nguồn gốc của voucher
+  description:
+    type: string
+    description: mô tả voucher
   display:
     type: string
     description: Kiểu hiển thị
@@ -26,13 +32,6 @@ properties:
       - public
       - private
       - individual
-  state:
-    type: string
-    description: trạng thái của voucher
-    enum:
-      - scheduled
-      - ongoing
-      - finished
   discount_type:
     type: string
     description: loại giảm giá
@@ -91,12 +90,6 @@ properties:
   created_by:
     type: integer
     description: đối tượng tạo voucher
-  image:
-    type: string
-    description: hình ảnh voucher
-  description:
-    type: string
-    description: mô tả voucher
   from_at:
     type: string
     description: ngày bắt đầu hoạt động
@@ -113,4 +106,3 @@ properties:
     type: string
     description: thời gian cập nhật
     format: date-time
-
