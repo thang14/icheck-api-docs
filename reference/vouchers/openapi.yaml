@@ -237,7 +237,6 @@ paths:
       summary: Danh sách voucher được user sưu tầm
       tags:
         - voucher_users
-        - Vouchers
       responses:
         '200':
           description: OK
@@ -303,6 +302,75 @@ paths:
           application/json:
             schema:
               $ref: ./models/voucherusercreate.v1.yaml
+  /voucher-list-insights:
+    get:
+      summary: Thống kê số voucher
+      tags:
+        - voucher_list_insights
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/voucherlistinsightresponse.v1.yaml
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: search
+          description: Tìm kiếm theo tên hoặc mã
+        - schema:
+            type: string
+            enum:
+              - discount
+              - refund
+          in: query
+          name: type
+          description: Loại voucher
+        - schema:
+            type: string
+            enum:
+              - public
+              - private
+              - individual
+          in: query
+          name: display
+          description: Kiểu hiển thị
+        - schema:
+            type: string
+            enum:
+              - waiting
+              - verifyed
+              - cancel
+          in: query
+          name: verifyed
+          description: Trạng thái voucher
+        - schema:
+            type: string
+            enum:
+              - scheduled
+              - ongoing
+              - finished
+          in: query
+          name: state
+          description: Tình trạng voucher
+        - schema:
+            type: number
+          in: query
+          name: shop_id
+          description: ID của shop
+        - schema:
+            type: string
+          in: query
+          name: from_at
+          description: 'Khoảng thời gian bắt đầu (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
+        - schema:
+            type: string
+          in: query
+          name: to_at
+          description: 'Khoảng thời gian kết thúc (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
+    parameters: []
 components:
   schemas: {}
 as: {}
