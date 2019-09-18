@@ -7,7 +7,7 @@ servers:
 paths:
   /vouchers:
     get:
-      summary: Lấy danh sách Vouchers
+      summary: Lấy danh sách Vouchers 4
       tags:
         - Vouchers
       requestBody: {}
