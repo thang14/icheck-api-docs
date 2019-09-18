@@ -20,7 +20,7 @@ paths:
         - schema:
             type: string
           in: query
-          name: ids
+          name: ids2
         - schema:
             type: string
             enum:
