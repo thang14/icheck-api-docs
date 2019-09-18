@@ -32,6 +32,16 @@ properties:
       - public
       - private
       - individual
+  verified:
+    type: string
+    description: Trạng thái xác thực
+    enum:
+      - waiting
+      - verified
+      - cancel
+  verify_reject_reason:
+    type: string
+    description: Lý do hủy duyệt
   discount_type:
     type: string
     description: loại giảm giá
