@@ -1,0 +1,13 @@
+title: DiscountProduct
+type: object
+x-examples:
+  example-1: {}
+properties:
+  discount_id:
+    type: integer
+  product_id:
+    type: integer
+  variant_id:
+    type: integer
+  special_price:
+    type: integer

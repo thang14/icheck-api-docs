@@ -1,9 +1,126 @@
-openapi: '3.0.0'
+openapi: 3.0.0
 info:
   title: Discounts
   version: '1.0'
 servers:
-- url: http://localhost:3000
-paths: {}
+  - url: 'http://localhost:3000'
+paths:
+  /discounts:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Discounts
+      responses: {}
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: shop_id
+        - schema:
+            type: string
+          in: query
+          name: ids
+        - schema:
+            type: string
+            enum:
+              - scheduled
+              - ongoing
+              - finished
+          in: query
+          name: status
+          description: ''
+      requestBody: {}
+      description: Lấy danh sách chương trình giảm giá
+    post:
+      summary: ''
+      responses:
+        '200':
+          description: OK
+      description: Tạo mới chương trình giảm giá
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./models/discountcreate.v1.yaml
+  '/discounts/{id}':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get Discount Detail
+      tags:
+        - Discounts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: ./models/discountoutput.v1.yaml
+                  count:
+                    type: integer
+    put:
+      summary: Update Discount
+      description: Sửa chương trình giảm giá
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                to_date:
+                  type: string
+                  format: date-time
+  '/discounts/{id}/products':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: List Discount Products
+      tags:
+        - Discounts
+      responses: {}
+      description: Danh sách sản phẩm của chương trình giảm giá
+    put:
+      summary: Update Product Discount
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ./models/discountproduct.v1.yaml
+      description: Cập nhật lại thông tin sản phẩm được giảm giá
+    delete:
+      summary: Delete Discount Product
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  description: Danh sách id sản phẩm cần được xóa
+                  items:
+                    type: integer
+      description: ''
 components:
   schemas: {}

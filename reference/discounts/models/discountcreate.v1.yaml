@@ -2,6 +2,11 @@ title: DiscountInput
 allOf:
   - $ref: ./discountcommon.v1.yaml
   - type: object
+    properties:
+      products:
+        type: array
+        items:
+          $ref: ./discountproduct.v1.yaml
 x-examples:
   example-1: {}
   example-2: {}
