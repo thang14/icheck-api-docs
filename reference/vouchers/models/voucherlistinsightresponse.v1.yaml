@@ -1,0 +1,18 @@
+title: VoucherListInsightResponse
+type: object
+properties:
+  out_of_use:
+    type: number
+    description: Voucher đã hết lượt sử dụng
+  finished:
+    type: number
+    description: Voucher đã hết hạn
+  ongoing:
+    type: number
+    description: Voucher đang hoạt động
+  scheduled:
+    type: number
+    description: Voucher chưa hoạt động
+  total:
+    type: number
+    description: Tổng số voucher
