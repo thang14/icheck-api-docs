@@ -1,0 +1,16 @@
+title: DiscountCommon
+type: object
+properties:
+  name:
+    type: string
+  from_date:
+    type: string
+    format: date-time
+  to_date:
+    type: string
+    format: date-time
+  product_count:
+    type: string
+required:
+  - name
+  - from_date

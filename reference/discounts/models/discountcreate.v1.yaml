@@ -1,0 +1,7 @@
+title: DiscountInput
+allOf:
+  - $ref: ./discountcommon.v1.yaml
+  - type: object
+x-examples:
+  example-1: {}
+  example-2: {}
