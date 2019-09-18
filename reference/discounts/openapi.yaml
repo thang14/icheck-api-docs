@@ -2,12 +2,13 @@ openapi: 3.0.0
 info:
   title: Discounts
   version: '1.0'
+  description: ''
 servers:
   - url: 'http://localhost:3000'
 paths:
   /discounts:
     get:
-      summary: Your GET endpoint
+      summary: List Discounts
       tags:
         - Discounts
       responses: {}
@@ -32,7 +33,7 @@ paths:
       requestBody: {}
       description: Lấy danh sách chương trình giảm giá
     post:
-      summary: ''
+      summary: Create Discount
       responses:
         '200':
           description: OK
@@ -42,6 +43,8 @@ paths:
           application/json:
             schema:
               $ref: ./models/discountcreate.v1.yaml
+      tags:
+        - Discounts
   '/discounts/{id}':
     parameters:
       - type: string
@@ -80,6 +83,8 @@ paths:
                 to_date:
                   type: string
                   format: date-time
+      tags:
+        - Discounts
   '/discounts/{id}/products':
     parameters:
       - type: string
@@ -105,6 +110,8 @@ paths:
               items:
                 $ref: ./models/discountproduct.v1.yaml
       description: Cập nhật lại thông tin sản phẩm được giảm giá
+      tags:
+        - Discounts
     delete:
       summary: Delete Discount Product
       responses:
@@ -122,5 +129,7 @@ paths:
                   items:
                     type: integer
       description: ''
+      tags:
+        - Discounts
 components:
   schemas: {}
