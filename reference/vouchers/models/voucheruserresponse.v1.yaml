@@ -22,6 +22,12 @@ properties:
   total_use:
     type: integer
     description: tổng số lượt sử dụng mà user có
+  from_at:
+    type: string
+    format: date-time
+  to_at:
+    type: string
+    format: date-time
   created_at:
     type: string
     format: date-time
