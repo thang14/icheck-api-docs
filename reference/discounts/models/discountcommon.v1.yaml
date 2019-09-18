@@ -3,6 +3,7 @@ type: object
 properties:
   name:
     type: string
+    description: Tên chương trình giảm giá
   from_date:
     type: string
     format: date-time
