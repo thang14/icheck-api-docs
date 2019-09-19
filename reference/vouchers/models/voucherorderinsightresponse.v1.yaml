@@ -1,0 +1,28 @@
+title: VoucherOrderInsightResponse
+type: object
+properties:
+  rows:
+    type: array
+    items:
+      type: object
+      properties:
+        transactions:
+          type: number
+          description: Số lượng giao dịch
+        seller_revenue:
+          type: number
+          description: Doanh thu của Seller
+        icheck_spend:
+          type: number
+          description: Số tiền iCheck tài trợ
+        seller_spend_point:
+          type: number
+          description: Số tiền Seller phải trả để hoàn point cho khách hàng
+        order_fee:
+          type: number
+          description: Phí giao dịch iCheck thu được
+        icheck_margin:
+          type: number
+          description: Lợi nhuân của iCheck
+  count:
+    type: number

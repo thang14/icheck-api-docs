@@ -304,7 +304,7 @@ paths:
               $ref: ./models/voucherusercreate.v1.yaml
   /voucher-list-insights:
     get:
-      summary: Thống kê số voucher
+      summary: Thống kê danh sách voucher
       tags:
         - voucher_list_insights
       responses:
@@ -371,6 +371,52 @@ paths:
           name: to_at
           description: 'Khoảng thời gian kết thúc (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
     parameters: []
+  /voucher-order-insights:
+    get:
+      summary: Thống kê đơn hàng áp dụng Vouchers
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/voucherorderinsightresponse.v1.yaml
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+        - schema:
+            type: integer
+          in: query
+          name: offset
+        - schema:
+            type: string
+          in: query
+          name: search
+          description: Tìm kiếm theo tên/mã voucher
+        - schema:
+            type: string
+            enum:
+              - discount
+              - refund
+          in: query
+          name: voucher_type
+          description: Loại voucher
+        - schema:
+            type: integer
+          in: query
+          name: shop_id
+          description: ID của shop
+        - schema:
+            type: integer
+            enum:
+              - '1'
+              - '0'
+          in: query
+          name: detail
+          description: detail = 1 sẽ lấy về danh sách thống kê chi tiết
 components:
   schemas: {}
 as: {}
