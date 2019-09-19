@@ -1,0 +1,26 @@
+title: VoucherNumberInsightResponse
+type: object
+properties:
+  rows:
+    type: array
+    items:
+      type: object
+      properties:
+        code:
+          type: string
+        type:
+          type: string
+        discount_type:
+          type: string
+        discount_amount:
+          type: number
+        shop_ids:
+          type: string
+        transactions:
+          type: integer
+        limit_use:
+          type: integer
+        can_use:
+          type: integer
+  count:
+    type: number

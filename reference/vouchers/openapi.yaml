@@ -91,12 +91,12 @@ paths:
         - schema:
             type: string
           in: query
-          name: from_at
+          name: from_at_range
           description: 'Khoảng thời gian bắt đầu (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
         - schema:
             type: string
           in: query
-          name: to_at
+          name: to_at_range
           description: 'Khoảng thời gian kết thúc (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
     post:
       summary: Tạo Voucher
@@ -363,18 +363,19 @@ paths:
         - schema:
             type: string
           in: query
-          name: from_at
+          name: from_at_range
           description: 'Khoảng thời gian bắt đầu (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
         - schema:
             type: string
           in: query
-          name: to_at
+          name: to_at_range
           description: 'Khoảng thời gian kết thúc (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
     parameters: []
   /voucher-order-insights:
     get:
       summary: Thống kê đơn hàng áp dụng Vouchers
-      tags: []
+      tags:
+        - voucher_order_insights
       responses:
         '200':
           description: OK
@@ -409,6 +410,73 @@ paths:
           in: query
           name: shop_id
           description: ID của shop
+        - schema:
+            type: string
+          in: query
+          name: from_at_range
+          description: 'Khoảng thời gian bắt đầu (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
+        - schema:
+            type: string
+          in: query
+          name: to_at_range
+          description: 'Khoảng thời gian kết thúc (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
+        - schema:
+            type: integer
+            enum:
+              - '1'
+              - '0'
+          in: query
+          name: detail
+          description: detail = 1 sẽ lấy về danh sách thống kê chi tiết
+  /voucher-number-insights:
+    get:
+      summary: Thống kê số lượng voucher
+      tags:
+        - voucher_number_insights
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./models/vouchernumberinsightresponse.v1.yaml
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: limit
+        - schema:
+            type: integer
+          in: query
+          name: offset
+        - schema:
+            type: string
+          in: query
+          name: search
+          description: Tìm kiếm theo tên/mã voucher
+        - schema:
+            type: string
+            enum:
+              - discount
+              - refund
+          in: query
+          name: voucher_type
+          description: Loại voucher
+        - schema:
+            type: integer
+          in: query
+          name: shop_id
+          description: ID của shop
+        - schema:
+            type: string
+          in: query
+          name: from_at_range
+          description: 'Khoảng thời gian bắt đầu (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
+        - schema:
+            type: string
+          in: query
+          name: to_at_range
+          description: 'Khoảng thời gian kết thúc (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
         - schema:
             type: integer
             enum:
