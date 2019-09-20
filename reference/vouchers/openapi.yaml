@@ -232,57 +232,7 @@ paths:
                     type: number
               required:
                 - ids
-  /voucher-users:
-    get:
-      summary: Danh sách voucher được user sưu tầm
-      tags:
-        - voucher_users
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  rows:
-                    type: array
-                    items:
-                      $ref: ./models/voucheruserresponse.v1.yaml
-                  count:
-                    type: number
-      description: Lấy ra danh sách các voucher đã được user sưu tầm
-      parameters:
-        - schema:
-            type: number
-          in: query
-          name: limit
-          required: true
-          description: ''
-        - schema:
-            type: number
-          in: query
-          name: offset
-          required: true
-        - schema:
-            type: string
-          in: query
-          name: order
-        - schema:
-            type: number
-          in: query
-          name: voucher_id
-          description: id của voucher
-        - schema:
-            type: number
-          in: query
-          name: user_id
-          description: id của user sưu tầm voucher
-        - schema:
-            type: string
-          in: query
-          name: search
-          description: tìm kiếm mã voucher
+  /vouchers/save:
     post:
       summary: Nhận mã vouchers
       responses:
@@ -294,19 +244,18 @@ paths:
                 type: array
                 items:
                   $ref: ./models/voucheruserresponse.v1.yaml
-      tags:
-        - voucher_users
       description: Api giúp user sưu tầm 1 hoặc nhiều mã voucher
       requestBody:
         content:
           application/json:
             schema:
               $ref: ./models/voucherusercreate.v1.yaml
-  /voucher-list-insights:
+      tags:
+        - Vouchers
+    parameters: []
+  /vouchers/list/insights:
     get:
       summary: Thống kê danh sách voucher
-      tags:
-        - voucher_list_insights
       responses:
         '200':
           description: OK
@@ -370,12 +319,13 @@ paths:
           in: query
           name: to_at_range
           description: 'Khoảng thời gian kết thúc (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
+      tags:
+        - Vouchers
+      description: ''
     parameters: []
-  /voucher-order-insights:
+  /vouchers/order/insights:
     get:
       summary: Thống kê đơn hàng áp dụng Vouchers
-      tags:
-        - voucher_order_insights
       responses:
         '200':
           description: OK
@@ -428,7 +378,11 @@ paths:
           in: query
           name: detail
           description: detail = 1 sẽ lấy về danh sách thống kê chi tiết
-  /voucher-number-insights:
+      tags:
+        - Vouchers
+      description: ''
+    parameters: []
+  /vouchers/number/insights:
     get:
       summary: Thống kê số lượng voucher
       tags:
@@ -485,6 +439,59 @@ paths:
           in: query
           name: detail
           description: detail = 1 sẽ lấy về danh sách thống kê chi tiết
+      description: ''
+    parameters: []
+  /vouchers/save/list:
+    get:
+      summary: Danh sách voucher được user sưu tầm
+      tags:
+        - Vouchers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: ./models/voucheruserresponse.v1.yaml
+                  count:
+                    type: number
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: limit
+          required: true
+          description: ''
+        - schema:
+            type: number
+          in: query
+          name: offset
+          required: true
+        - schema:
+            type: string
+          in: query
+          name: order
+        - schema:
+            type: number
+          in: query
+          name: voucher_id
+          description: id của voucher
+        - schema:
+            type: number
+          in: query
+          name: user_id
+          description: id của user sưu tầm voucher
+        - schema:
+            type: string
+          in: query
+          name: search
+          description: tìm kiếm mã voucher
+      description: ''
 components:
   schemas: {}
 as: {}
