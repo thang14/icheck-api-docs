@@ -385,8 +385,6 @@ paths:
   /vouchers/number/insights:
     get:
       summary: Thống kê số lượng voucher
-      tags:
-        - voucher_number_insights
       responses:
         '200':
           description: OK
@@ -440,6 +438,8 @@ paths:
           name: detail
           description: detail = 1 sẽ lấy về danh sách thống kê chi tiết
       description: ''
+      tags:
+        - Vouchers
     parameters: []
   /vouchers/save/list:
     get:
@@ -492,6 +492,60 @@ paths:
           name: search
           description: tìm kiếm mã voucher
       description: ''
+  /vouchers/finish:
+    post:
+      summary: Dừng hoạt động vouchers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: number
+              required:
+                - ids
+      description: ''
+      tags:
+        - Vouchers
+  /vouchers/reject-verify:
+    post:
+      summary: Từ chối xác thực vouchers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: number
+      tags:
+        - Vouchers
+      description: ''
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: number
+              required:
+                - ids
 components:
   schemas: {}
 as: {}
