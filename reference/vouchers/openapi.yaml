@@ -71,6 +71,7 @@ paths:
               - waiting
               - verifyed
               - cancel
+              - info_waiting
           in: query
           name: verifyed
           description: Trạng thái voucher
