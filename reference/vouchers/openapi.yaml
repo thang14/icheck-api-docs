@@ -87,7 +87,7 @@ paths:
             type: number
           in: query
           name: shop_id
-          description: ID của shop
+          description: 'ID của shop ( required nếu là seller, optional nếu là admin )'
         - schema:
             type: string
           in: query
@@ -241,15 +241,18 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: ./models/voucheruserresponse.v1.yaml
+                $ref: ./models/voucheruserresponse.v1.yaml
       description: Api giúp user sưu tầm 1 hoặc nhiều mã voucher
       requestBody:
         content:
           application/json:
             schema:
-              $ref: ./models/voucherusercreate.v1.yaml
+              type: object
+              properties:
+                voucher_id:
+                  type: number
+              required:
+                - voucher_id
       tags:
         - Vouchers
     parameters: []
@@ -308,7 +311,7 @@ paths:
             type: number
           in: query
           name: shop_id
-          description: ID của shop
+          description: 'ID của shop ( required nếu là seller, optional nếu là admin )'
         - schema:
             type: string
           in: query
@@ -359,7 +362,7 @@ paths:
             type: integer
           in: query
           name: shop_id
-          description: ID của shop
+          description: 'ID của shop ( required nếu là seller, optional nếu là admin )'
         - schema:
             type: string
           in: query
@@ -418,7 +421,7 @@ paths:
             type: integer
           in: query
           name: shop_id
-          description: ID của shop
+          description: 'ID của shop ( required nếu là seller, optional nếu là admin )'
         - schema:
             type: string
           in: query
@@ -492,7 +495,7 @@ paths:
           name: search
           description: tìm kiếm mã voucher
       description: ''
-  /vouchers/finish:
+  '/vouchers/{id}/finish':
     post:
       summary: Dừng hoạt động vouchers
       responses:
@@ -501,24 +504,17 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  type: number
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                ids:
-                  type: array
-                  items:
-                    type: number
-              required:
-                - ids
+                $ref: ./models/voucheresponse.v1.yaml
+      requestBody: {}
       description: ''
       tags:
         - Vouchers
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
   /vouchers/reject-verify:
     post:
       summary: Từ chối xác thực vouchers
