@@ -1,0 +1,28 @@
+title: ShopCustomerResponse
+type: object
+description: ''
+properties:
+  id:
+    type: number
+    description: ID của khách hàng
+  name:
+    type: string
+    description: Tên khách hàng
+  phone:
+    type: string
+    description: Số điện thoại khách hàng
+  email:
+    type: string
+    description: Email khách hàng
+  city_id:
+    type: integer
+  district_id:
+    type: integer
+  ward_id:
+    type: integer
+  address:
+    type: string
+  user_level:
+    type: string
+  order_count:
+    type: string

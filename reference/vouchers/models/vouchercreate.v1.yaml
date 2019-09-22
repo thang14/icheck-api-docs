@@ -68,8 +68,8 @@ properties:
     items:
       type: number
   owner_id:
-    type: integer
-    description: chủ sở hữu voucher
+    description: ID của shop sử hữu mã voucher
+    type: number
   created_by:
     type: integer
     description: đối tượng tạo voucher
@@ -87,6 +87,10 @@ properties:
     type: string
     description: ngày kết thúc hoạt động
     format: date-time
+  is_admin:
+    type: boolean
+    default: false
+    description: Nếu là admin thì truyền is_admin = true còn không thì không cần truyền
 required:
   - name
   - code
