@@ -1,9 +1,209 @@
-openapi: '3.0.0'
+openapi: 3.0.0
 info:
   title: Shops
   version: '1.0'
 servers:
-- url: http://localhost:3000
-paths: {}
+  - url: 'http://localhost:3000'
+paths:
+  '/shops/{id}/customers':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Lấy danh sách khách hàng đã từng mua hàng của shop
+      tags:
+        - Shop_Customer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: ./models/shopcustomerresponse.v1.yaml
+                  count:
+                    type: number
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: limit
+          description: ''
+        - schema:
+            type: number
+          in: query
+          name: offset
+        - schema:
+            type: string
+          in: query
+          name: search
+          description: Tìm kiếm gần đúng theo tên khách hàng
+        - schema:
+            type: string
+          in: query
+          name: phone
+          description: Số điện thoại khách hàng
+        - schema:
+            type: string
+          in: query
+          name: email
+          description: Email khách hàng
+        - schema:
+            type: string
+          in: query
+          name: user_level
+          description: Hạng level của khách hàng
+        - schema:
+            type: number
+          in: query
+          name: city_id
+          description: Id Tỉnh/Thành phố
+        - schema:
+            type: number
+          in: query
+          name: district_id
+          description: ID Quận/Huyện
+        - schema:
+            type: number
+          in: query
+          name: ward_id
+          description: ID Phường/Xã
+  '/shops/{id}/customers/{customer_id}/products':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - type: string
+        name: customer_id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Lấy danh sách sản phẩm khách hàng đã mua từ shop
+      tags:
+        - Shop_Customer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  rows:
+                    type: array
+                    items:
+                      $ref: ./models/shopcustomerproductresponse.v1.yaml
+                  count:
+                    type: number
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: limit
+        - schema:
+            type: number
+          in: query
+          name: offset
+  '/shops/{id}/order-insights':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Thống kê đơn hàng theo hạng người dùng
+      tags:
+        - Shop_Customer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    rank:
+                      type: string
+                    ratio:
+                      type: integer
+      description: ''
+      parameters:
+        - schema:
+            type: string
+            maxLength: 0
+            minLength: 0
+          in: query
+          name: from
+          description: Thời gian bắt đầu
+        - schema:
+            type: string
+          in: query
+          name: to
+          description: Thời gian kết thúc
+        - schema:
+            type: integer
+          in: query
+          name: transachtion
+          description: Số lượt giao dịch tối thiểu
+  '/shops/{id}/order-incurred':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags:
+        - Shop_Customer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    time:
+                      type: string
+                    order_count:
+                      type: integer
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: from
+          description: Thời giạn bắt đầu
+        - schema:
+            type: string
+          in: query
+          name: to
+          description: Thời gian kết thúc
+        - schema:
+            type: string
+            enum:
+              - day
+              - hour
+          in: query
+          name: type
+          description: Kiểu mốc thời gian
 components:
   schemas: {}

@@ -505,7 +505,7 @@ paths:
         - Vouchers
     parameters:
       - schema:
-          type: string
+          type: integer
         name: id
         in: path
         required: true
@@ -538,6 +538,36 @@ paths:
                   type: string
               required:
                 - ids
+  '/vouchers/{id}/sent':
+    parameters:
+      - type: string
+        name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+    post:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: number
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_ids:
+                  type: array
+                  items:
+                    type: integer
 components:
   schemas: {}
 as: {}

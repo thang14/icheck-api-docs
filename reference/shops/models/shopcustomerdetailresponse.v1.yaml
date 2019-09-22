@@ -1,0 +1,23 @@
+title: ShopCustomerDetailResponse
+type: object
+properties:
+  id:
+    type: number
+  name:
+    type: string
+  phone:
+    type: string
+  email:
+    type: string
+  address:
+    type: string
+  city_id:
+    type: number
+  district_id:
+    type: number
+  ward_id:
+    type: number
+  user_level:
+    type: string
+  order_count:
+    type: number

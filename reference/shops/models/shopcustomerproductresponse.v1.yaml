@@ -1,0 +1,38 @@
+title: ShopCustomerProductResponse
+type: object
+properties:
+  id:
+    type: number
+    description: ID sản phẩm
+  order_id:
+    type: number
+  product_id:
+    type: number
+  item_id:
+    type: number
+  quantity:
+    type: number
+  price:
+    type: number
+  origin_price:
+    type: number
+  product:
+    type: object
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+      image:
+        type: string
+  item:
+    type: object
+    properties:
+      name:
+        type: string
+      images:
+        type: array
+        items:
+          type: string
+      barcode:
+        type: string
