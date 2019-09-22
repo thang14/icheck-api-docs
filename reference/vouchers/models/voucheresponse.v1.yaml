@@ -39,6 +39,7 @@ properties:
       - waiting
       - verified
       - cancel
+      - info_wating
   verify_reject_reason:
     type: string
     description: Lý do hủy duyệt

@@ -99,6 +99,11 @@ paths:
           in: query
           name: to_at_range
           description: 'Khoảng thời gian kết thúc (VD: "2019-09-11T07:54:14.414Z,2019-10-13T07:54:14.414Z")'
+        - schema:
+            type: string
+          in: query
+          name: filter
+          description: 'Nếu là admin hoặc seller thì truyền filter="all" còn là người dùng bình thường thì không cần truyền'
     post:
       summary: Tạo Voucher
       responses:
@@ -150,18 +155,6 @@ paths:
           application/json:
             schema:
               $ref: ./models/voucherupdate.v1.yaml
-      tags:
-        - Vouchers
-    delete:
-      summary: Xóa voucher
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ./models/voucheresponse.v1.yaml
-      description: ''
       tags:
         - Vouchers
   /vouchers/cancel-verify:
@@ -541,6 +534,8 @@ paths:
                   type: array
                   items:
                     type: number
+                verify_reject_reason:
+                  type: string
               required:
                 - ids
 components:
