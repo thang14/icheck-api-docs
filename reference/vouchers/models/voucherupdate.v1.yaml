@@ -1,18 +1,24 @@
 title: VoucherUpdate
 type: object
+x-examples: {}
 properties:
   name:
     type: string
     description: |
       Tên của voucher
-  source:
-    type: string
-    description: Nguồn gốc của voucher
   image:
     type: string
     description: hình ảnh voucher
   description:
     type: string
     description: mô tả voucher
-required:
-  - name
+  limit_use:
+    type: integer
+    description: Giới hạn sử dụng của voucher
+  limit_per_user:
+    type: integer
+    description: Giới hạn sử dụng của mỗi user
+  to_at:
+    type: string
+    format: date-time
+    description: Thời gian hết hạn voucher

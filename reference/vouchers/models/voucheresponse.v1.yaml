@@ -19,9 +19,6 @@ properties:
   image:
     type: string
     description: hình ảnh voucher
-  source:
-    type: string
-    description: Nguồn gốc của voucher
   description:
     type: string
     description: mô tả voucher
@@ -43,6 +40,9 @@ properties:
   verify_reject_reason:
     type: string
     description: Lý do hủy duyệt
+  new_info:
+    description: Thôn tin chờ duyệt cập nhật
+    type: object
   discount_type:
     type: string
     description: loại giảm giá
