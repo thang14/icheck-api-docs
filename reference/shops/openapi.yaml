@@ -57,7 +57,7 @@ paths:
           name: email
           description: Email khách hàng
         - schema:
-            type: string
+            type: integer
           in: query
           name: user_level
           description: Hạng level của khách hàng
@@ -117,7 +117,7 @@ paths:
             type: number
           in: query
           name: offset
-  '/shops/{id}/order-insights':
+  '/shops/{id}/orrder-level-insights':
     parameters:
       - type: string
         name: id
@@ -139,9 +139,9 @@ paths:
                 items:
                   type: object
                   properties:
-                    rank:
-                      type: string
-                    ratio:
+                    level:
+                      type: integer
+                    order_count:
                       type: integer
       description: ''
       parameters:
@@ -169,7 +169,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Thống kê phát sinh đơn hàng
       tags:
         - Shop_Customer
       responses:
@@ -182,6 +182,8 @@ paths:
                 items:
                   type: object
                   properties:
+                    level:
+                      type: integer
                     time:
                       type: string
                     order_count:
@@ -204,6 +206,6 @@ paths:
               - hour
           in: query
           name: type
-          description: Kiểu mốc thời gian
+          description: Kiểu mốc thời gian (hour/day)
 components:
   schemas: {}
