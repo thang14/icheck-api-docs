@@ -18,6 +18,6 @@ properties:
   ward_id:
     type: number
   user_level:
-    type: string
+    type: number
   order_count:
     type: number

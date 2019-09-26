@@ -7,7 +7,7 @@ servers:
 paths:
   /vouchers:
     get:
-      summary: Lấy danh sách Vouchers 4
+      summary: Lấy danh sách Vouchers
       tags:
         - Vouchers
       requestBody: {}
@@ -103,7 +103,7 @@ paths:
             type: string
           in: query
           name: filter
-          description: 'Nếu là admin hoặc seller thì truyền filter="all" còn là người dùng bình thường thì không cần truyền'
+          description: Nếu là admin hoặc seller thì truyền filter=all còn là người dùng bình thường thì không cần truyền
     post:
       summary: Tạo Voucher
       responses:
@@ -489,26 +489,6 @@ paths:
           name: search
           description: tìm kiếm mã voucher
       description: ''
-  '/vouchers/{id}/finish':
-    post:
-      summary: Dừng hoạt động vouchers
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: ./models/voucheresponse.v1.yaml
-      requestBody: {}
-      description: ''
-      tags:
-        - Vouchers
-    parameters:
-      - schema:
-          type: integer
-        name: id
-        in: path
-        required: true
   /vouchers/reject-verify:
     post:
       summary: Từ chối xác thực vouchers

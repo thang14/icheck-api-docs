@@ -23,6 +23,6 @@ properties:
   address:
     type: string
   user_level:
-    type: string
+    type: integer
   order_count:
     type: string
